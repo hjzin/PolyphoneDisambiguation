@@ -75,6 +75,6 @@ def create_poly_dic():
 
 
 if __name__ == '__main__':
-    #count_polyphone()
-    #polyphone_frequency()
+    count_polyphone()
+    polyphone_frequency()
     create_poly_dic()
