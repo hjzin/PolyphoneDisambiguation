@@ -1,5 +1,7 @@
 # -*- coding: utf-8 -*-
 # 数据处理
+from collections import defaultdict
+import json
 
 
 # 计算数据中多音字的个数
@@ -56,6 +58,23 @@ def polyphone_frequency():
             f2.write('\n')
 
 
+# 建立多音字字典，包含多音字其读音
+def create_poly_dic():
+    poly_dic = defaultdict(list)
+    with open("../data/polyphones.txt", 'r', encoding='utf-8') as f:
+        lines = f.readlines()
+    lines = [x for x in lines if x != '\n']
+    for l in lines:
+        words = l.split()
+        pron = words[1].split(',')
+        for p in pron:
+            poly_dic[words[-1]].append(p)
+    # 存储成json文件
+    with open("../data/polyphones.json", 'w', encoding='utf-8') as f1:
+        json.dump(poly_dic, f1, ensure_ascii=False)
+
+
 if __name__ == '__main__':
-    count_polyphone()
-    polyphone_frequency()
+    #count_polyphone()
+    #polyphone_frequency()
+    create_poly_dic()
