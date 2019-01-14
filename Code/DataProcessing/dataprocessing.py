@@ -38,20 +38,25 @@ def polyphone_frequency():
             words = line.split()
             for w in words:
                 if '{' in w:  # 多音字的注音会用'{}'标识
-                    flag = True
                     pos = w.index('{')
                     if pos == 1:
-                        if w[0] in polyphones:
-                            polyphones[w[0]] += 1
-                        else:
-                            polyphones[w[0]] = 1
-                    # 可能一个词中有多个多音字
-                    else:
-                        for i in range(pos):
+                        # 和已有多音字库做对比，删去字库中不存在的多音字
+                        if w[0] in load_dict:
+                            flag = True
                             if w[0] in polyphones:
                                 polyphones[w[0]] += 1
                             else:
                                 polyphones[w[0]] = 1
+                    # 可能一个词中有多个多音字
+                    else:
+                        # 和已有多音字库做对比，删去字库中不存在的多音字
+                        if w[0] in load_dict:
+                            flag = True
+                            for i in range(pos):
+                                if w[0] in polyphones:
+                                    polyphones[w[0]] += 1
+                                else:
+                                    polyphones[w[0]] = 1
             if flag:
                 count += 1
                 nf.write(line)
@@ -61,8 +66,6 @@ def polyphone_frequency():
     ordered_list = sorted(polyphones.items(), key=lambda item: item[1], reverse= True)
     with open('../data/198801output.txt', 'w', encoding='utf-8') as f2:
         for l in ordered_list:
-            # 和已有多音字库做对比，删去字库中不存在的多音字
-            if l[0] in load_dict:
                 category += 1
                 f2.write('%s : %d' % (l[0], l[1]))
                 f2.write('\n')
@@ -91,12 +94,17 @@ def get_poly_phrase():
         phrase_list = f.readlines()
     print("短语总数 %d" % len(phrase_list))
     count = 0
+    ch_dic = defaultdict()
     with open("../data/poly_phrase.txt", 'w', encoding='utf-8') as of:
         for p in phrase_list:
             words = p.split('=')
             is_poly = False
             for ch in words[0]:
                 if ch in load_dict:
+                    if ch in ch_dic:
+                        ch_dic[ch] += 1
+                    else:
+                        ch_dic[ch] = 1
                     is_poly = True
                     pos = words[0].index(ch)
                     of.write("%d " % pos)    # 在短语前输出多音字在短语中的位置
@@ -104,10 +112,15 @@ def get_poly_phrase():
                 count += 1
                 of.write("%s %s" % (words[0], words[-1]))  # 输出含多音字的短语及其读音
     print("含多音字的短语总数 %d" % count)
+    ordered_chlist = sorted(ch_dic.items(), key=lambda item: item[1], reverse=True)
+    with open("../data/phrase_frequency.txt", 'w', encoding='utf-8') as pf:
+        # 将多音字按出现频次从多到少排序
+        for l in ordered_chlist:
+                pf.write('%s : %d\n' % (l[0], l[1]))
 
 
 if __name__ == '__main__':
-    count_polyphone()
-    polyphone_frequency()
-    create_poly_dic()
+    #count_polyphone()
+    #polyphone_frequency()
+    #create_poly_dic()
     get_poly_phrase()
