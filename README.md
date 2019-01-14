@@ -16,7 +16,7 @@
 
 `polyphones.json`：将所有多音字和读音存储成json文件
 
-`198801.txt`：人民日报1988年一月的新闻语料，一共有19374条新闻，包含5688个多音字，其中有89种不同的多音字，来自[pkuopendata](http://opendata.pku.edu.cn/dataset.xhtml?persistentId=doi:10.18170/DVN/SEYRX5)
+`198801.txt`：人民日报1988年一月的新闻语料，一共有19374条新闻，包含5666个多音字，其中有89种不同的多音字，来自[pkuopendata](http://opendata.pku.edu.cn/dataset.xhtml?persistentId=doi:10.18170/DVN/SEYRX5)
 
 `198801output.txt`：存储每个多音字出现的次数，按出现频次从多到少排序
 
@@ -26,3 +26,4 @@
 
 `poly_phrase.txt`：将所有含多音字的短语输出到该文件中，共有73574条含多音字的短语。每条短语前面的数字是多音字在短语中的位置（从0开始计算）
 
+`phrase_frequency.txt` ：输出包含多音字的短语中所有多音字出现的次数，按出现次数从多到少排序。
