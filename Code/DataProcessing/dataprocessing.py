@@ -99,15 +99,15 @@ def get_poly_phrase():
         for p in phrase_list:
             words = p.split('=')
             is_poly = False
-            for ch in words[0]:
+            for i in range(len(words[0])):
+                ch = words[0][i]
                 if ch in load_dict:
                     if ch in ch_dic:
                         ch_dic[ch] += 1
                     else:
                         ch_dic[ch] = 1
                     is_poly = True
-                    pos = words[0].index(ch)
-                    of.write("%d " % pos)    # 在短语前输出多音字在短语中的位置
+                    of.write("%d " % i)    # 在短语前输出多音字在短语中的位置
             if is_poly:
                 count += 1
                 of.write("%s %s" % (words[0], words[-1]))  # 输出含多音字的短语及其读音
@@ -120,7 +120,7 @@ def get_poly_phrase():
 
 
 if __name__ == '__main__':
-    #count_polyphone()
-    #polyphone_frequency()
-    #create_poly_dic()
+    count_polyphone()
+    polyphone_frequency()
+    create_poly_dic()
     get_poly_phrase()
