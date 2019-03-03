@@ -47,7 +47,7 @@
 
 ## 仿照词性标注问题的分类方法
 
-代码：`code/disambiguation_pos.py`
+代码：`code/PolyphoneDisambiguation/disambiguation_pos.py`
 
 这种方法仿照了词性标注的处理思路，将训练数据编码为如下格式：
 
