@@ -2,21 +2,21 @@
 # -*- coding:utf-8 -*-
 """
 @Author: hhzjj
-@Description：使用分类的方法进行多音字消岐
+@Description：使用类似词性标注的方法进行多音字消岐
 """
 import torch
 from torch import nn, optim
 from torch.autograd import Variable
 
 train_data = [
-    ('在古都西安', '都', 'dū'),
-    ('我们都是西安人', '都', 'dōu'),
-    ('西安是古都', '都', 'dū'),
-    ('我们都很好', '都', 'dōu'),
+    ('在古都西安', '都', ['NA', 'NA', 'dū', 'NA', 'NA']),
+    ('我们都是西安人', '都', ['NA', 'NA', 'dōu', 'NA', 'NA', 'NA', 'NA']),
+    ('西安是古都', '都', ['NA', 'NA', 'NA', 'NA', 'dū']),
+    ('我们都很好', '都', ['NA', 'NA', 'dōu', 'NA', 'NA']),
 ]
 
 test_data = [
-    ("都是我", "都", "dōu"),
+    ('西安人都很好', '都', ['NA', 'NA', 'NA', 'dōu', 'NA', 'NA']),
 ]
 
 # 将每个字和多音字的注音编码
@@ -26,8 +26,9 @@ for words, _, prons in train_data:
     for ch in words:
         if ch not in word_to_idx:
             word_to_idx[ch] = len(word_to_idx)
-    if prons not in pron_to_idx:
-        pron_to_idx[prons] = len(pron_to_idx)
+    for pr in prons:
+        if pr not in pron_to_idx:
+            pron_to_idx[pr] = len(pron_to_idx)
 print(pron_to_idx)
 print(word_to_idx)
 
@@ -42,10 +43,10 @@ class DisambiguationLSTM(nn.Module):
 
     def forward(self, x):
         x = self.word_embedding(x)
-        x = x.unsqueeze(0)      # x.size() : (1,5,100)
-        x, _ = self.lstm(x)     # x.size(): (1,5,256)
-        x_out = x[:, -1, :]     # 全连接层的输入为神经网络最后一层最后一个time step的输出
-        x = self.linear1(x_out)     # x.size() : (1,2)
+        x = x.unsqueeze(0)      # x.size(): (1,5,100)
+        x, _ = self.lstm(x)     # x.size():  (1,5,256)
+        x = x.squeeze(0)        # 降一维
+        x = self.linear1(x)     # 此时全连接层的输入是神经网络最后一层所有time step的输出
         return x
 
 
@@ -63,17 +64,16 @@ def make_sequence(x, dic):
 
 
 # 训练
-for epoch in range(100):
+for epoch in range(150):
     print('*' * 10)
     print('eopch{}'.format(epoch + 1))
     running_loss = 0
     for data in train_data:
         word, _, pron = data
         word_list = make_sequence(word, word_to_idx)
-        pron_list = [pron_to_idx[pron]]
-        pron = Variable(torch.LongTensor(pron_list))
+        pron_list = make_sequence(pron, pron_to_idx)
         out = model(word_list)
-        loss = loss_func(out, pron)
+        loss = loss_func(out, pron_list)
         running_loss += loss.data.numpy()
         optimizer.zero_grad()
         loss.backward()
@@ -86,8 +86,5 @@ print()
 for w, _, p in test_data:
     input_seq = make_sequence(w, word_to_idx)
     test_out = model(input_seq)
-    pred_y = torch.max(test_out, 1)[1].data.numpy()     # torch.max(a, 1) 返回每一行中的最大值，且返回其列索引
-    print(list(pron_to_idx.keys())[list(pron_to_idx.values()).index(pred_y[0])], 'prediction')
-    print(p, 'real')
-
+    print(test_out)
 
