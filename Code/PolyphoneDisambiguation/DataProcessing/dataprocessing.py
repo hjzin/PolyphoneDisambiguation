@@ -146,9 +146,38 @@ def sort_phrase():
     for k, v in num_dic.items():
         print('多音字个数:%d \t 句子数量:%d\n' %(k, v))
 
+
+# 将所有多音字按读音个数排序
+def num_pron(s):
+    prons = s.split()[1]
+    prons_list = prons.split(',')
+    return len(prons_list)
+
+
+def sort_polyphone():
+    with open('../data/polyphones.txt', 'r', encoding='utf-8') as f:
+        polyphone_list = f.readlines()
+    polyphone_list = [x for x in polyphone_list if x != '\n']
+    sum_dic = defaultdict()
+    sorted_polyphone = sorted(polyphone_list, key=num_pron)
+    with open('../data/polyphones.txt', 'w', encoding='utf-8') as of:
+        for p in sorted_polyphone:
+            pron_list = p.split()[1]
+            pron_list = pron_list.split(',')
+            if len(pron_list) in sum_dic:
+                sum_dic[len(pron_list)] += 1
+            else:
+                sum_dic[len(pron_list)] = 1
+            of.write(p)
+            of.write('\n')
+    for k, v in sum_dic.items():
+        print('读音个数:%d \t 多音字数量:%d\n' % (k, v))
+
+
 if __name__ == '__main__':
     # count_polyphone()
     # polyphone_frequency()
     # create_poly_dic()
     # get_poly_phrase()
-    sort_phrase()
+    # sort_phrase()
+    sort_polyphone()
