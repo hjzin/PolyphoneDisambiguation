@@ -3,7 +3,7 @@
 """
 @Time：2019/3/9
 @Author: hhzjj
-@Description：数据处理
+@Description：统计分析数据中的多音字个数等特征
 """
 from collections import defaultdict
 import json
