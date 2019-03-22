@@ -4,9 +4,9 @@
 
 查了一些国内外的论文，总结了一下其中用到的方法
 
-见《问题认识》.md
+见[《问题认识》](https://github.com/hjzin/PolyphoneDisambiguation/blob/master/%E9%97%AE%E9%A2%98%E8%AE%A4%E8%AF%86.md)
 
-## 数据处理
+## 数据统计
 
 用到的数据见Code里的data目录。
 
@@ -52,6 +52,12 @@
 `phrase_frequency.txt` ：输出包含多音字的短语中所有多音字出现的次数，按出现次数从多到少排序。
 
 `phrase.csv`：将短语和读音转换成特定格式`(text, label)`，text为句子，label为读音，非多音字编码为'NA'，多音字编码为其读音。
+
+##  语料处理
+
+主要是将语料划分为训练集、验证集与测试集，并将句子和读音做tokenize，建立词典，设定batchsize与生成迭代器，使数据能送入模型进行训练。
+
+在进行处理时使用了[torchtext](https://github.com/pytorch/text)库，能方便的对文本进行处理，并且支持csv、tsv等格式的读取。
 
 ## 模型搭建
 
