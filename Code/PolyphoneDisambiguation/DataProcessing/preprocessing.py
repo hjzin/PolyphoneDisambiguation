@@ -7,7 +7,7 @@
 """
 import os
 from torchtext.data import Field, Example, TabularDataset
-from torchtext.data import BucketIterator
+from torchtext.data import BucketIterator, Iterator
 import DataProcessing.configure as config
 
 
@@ -31,17 +31,17 @@ def label_tokenize(y):
 
 
 class BatchIterator:
-    def __init__(self, train_path, valid_path, batch_size, format='csv'):
+    def __init__(self, train_path, valid_path, test_path, batch_size, format='csv'):
         self.train_path = train_path
         self.valid_path = valid_path
+        self.test_path = test_path
         self.batch_size = batch_size
         self.fomat = format
+        self.TEXT = Field(sequential=True, use_vocab=True, tokenize=text_tokenize, batch_first=True)
+        self.LABEL = Field(sequential=True, use_vocab=True, tokenize=label_tokenize, batch_first=True)
 
     def create_dataset(self):
-        TEXT = Field(sequential=True, use_vocab=True, tokenize=text_tokenize)
-        LABEL = Field(sequential=True, use_vocab=True, tokenize=label_tokenize)
-
-        fields = [("text", TEXT), ("label", LABEL)]
+        fields = [("text", self.TEXT), ("label", self.LABEL)]
         train, valid = TabularDataset.splits(
             path=os.getcwd(),
             train=self.train_path,
@@ -50,11 +50,18 @@ class BatchIterator:
             skip_header=True,
             fields=fields
         )
-        TEXT.build_vocab(train)
-        LABEL.build_vocab(train)
-        return train, valid
+        test_field = [("text", self.TEXT), ("label", None)]
+        test = TabularDataset(
+            path=self.test_path,
+            format='csv',
+            skip_header=True,
+            fields=test_field
+        )
+        self.TEXT.build_vocab(train)
+        self.LABEL.build_vocab(train)
+        return train, valid, test
 
-    def get_iterator(self, train, valid):
+    def get_iterator(self, train, valid, test):
         train_iter, val_iter = BucketIterator.splits(
             (train, valid),
             batch_sizes=(self.batch_size, self.batch_size),
@@ -62,16 +69,18 @@ class BatchIterator:
             sort_within_batch=True,
             shuffle=True
         )
-        return train_iter, val_iter
+        test_iter = Iterator(
+            dataset=test,
+            batch_size=self.batch_size,
+            sort=False,
+            sort_within_batch=False,
+        )
+        return train_iter, val_iter, test_iter
 
 
 if __name__ == '__main__':
-    bi = BatchIterator(train_path=config.trn_file, valid_path=config.val_file, batch_size=2)
-    train, valid = bi.create_dataset()
-    train_iter, valid_iter = bi.get_iterator(train=train, valid=valid)
-    batch = next(iter(train_iter))
-    print(len(train_iter))
-    print('batch', batch)
-    print('batch_text', batch.text)
-    print('batch_label', batch.label)
+    batch_iter = BatchIterator(config.trn_file, config.val_file, config.tst_file,
+                               batch_size=config.batch_size)
+    train_data, valid_data, test_data = batch_iter.create_dataset()
+    train_iter, valid_iter, test_iter = batch_iter.get_iterator(train=train_data, valid=valid_data, test=test_data)
 
