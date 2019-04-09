@@ -14,4 +14,4 @@ val_file = '../data/valid.csv'
 tst_file = '../data/test.csv'
 batch_size = 512
 epochs = 5
-num_layer = 2
+num_layer = 2       # LSTM层数
