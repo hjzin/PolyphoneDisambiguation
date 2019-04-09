@@ -12,5 +12,6 @@ val_rate = 0.25      # 验证集所占比例
 trn_file = '../data/train.csv'
 val_file = '../data/valid.csv'
 tst_file = '../data/test.csv'
-batch_size = 128
+batch_size = 512
 epochs = 5
+num_layer = 2
