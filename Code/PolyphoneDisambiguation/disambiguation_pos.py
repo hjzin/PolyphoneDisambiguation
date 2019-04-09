@@ -31,12 +31,17 @@ class DisambiguationLSTM(nn.Module):
     def __init__(self, n_word, word_dim, word_hidden, n_pronounce):
         super(DisambiguationLSTM, self).__init__()
         self.word_embedding = nn.Embedding(n_word, word_dim)
-        self.lstm = nn.LSTM(input_size=word_dim, hidden_size=word_hidden, batch_first=True, bidirectional=True)
+        self.lstm = nn.LSTM(
+            input_size=word_dim,
+            hidden_size=word_hidden,
+            num_layers=configure.num_layer,
+            batch_first=True,
+            bidirectional=True
+        )
         self.linear1 = nn.Linear(word_hidden*2, n_pronounce)
 
     def forward(self, x):
         x = self.word_embedding(x)
-        # x = x.unsqueeze(0)      # x.size(): (1,5,100)
         x, _ = self.lstm(x)     # x.size():  (1,5,256)
         x = x.squeeze(0)        # 降一维
         x = self.linear1(x)     # 此时全连接层的输入是神经网络最后一层所有time step的输出
@@ -58,22 +63,27 @@ def myCrossEntropy(input, target):
     :return: 当前的loss值
     """
     batch_size = input.size()[0]
-    num = input.size()[1]
-    classes = input.size()[2]
+    # num = input.size()[1]
+    # classes = input.size()[2]
     loss = torch.FloatTensor(1)
-    # loss.requires_grad = True
+
+    # for i in range(batch_size):
+    #     x = torch.zeros(num)
+    #     for j in range(num):
+    #         x[j] -= input[i][j][target[i][j]]
+    #     x_1 = torch.zeros(num)
+    #     for p in range(num):
+    #         for q in range(classes):
+    #             x_1[p] += torch.exp(input[i][p][q])
+    #     res = torch.FloatTensor(1)
+    #     for n in range(num):
+    #         res += x[n] + torch.log(x_1[n])
+    #     loss += torch.div(res, torch.FloatTensor([num]))
+    # result = torch.div(loss, torch.FloatTensor([batch_size]))
+
     for i in range(batch_size):
-        x = torch.zeros(num)
-        for j in range(num):
-            x[j] -= input[i][j][target[i][j]]
-        x_1 = torch.zeros(num)
-        for p in range(num):
-            for q in range(classes):
-                x_1[p] += torch.exp(input[i][p][q])
-        res = torch.FloatTensor(1)
-        for n in range(num):
-            res += x[n] + torch.log(x_1[n])
-        loss += torch.div(res, torch.FloatTensor([num]))
+        loss_i = loss_func(input[i], target[i])
+        loss += loss_i
     result = torch.div(loss, torch.FloatTensor([batch_size]))
     return result
 
@@ -92,7 +102,6 @@ def get_accuracy(texts, output, target):
     if batch_size == 1:
         pred_y = torch.argmax(output, 1)
         pred_y = pred_y.unsqueeze(0)
-        # num = pred_y.size()[0]
     else:
         pred_y = torch.argmax(output, 2)
     num = pred_y.size()[1]  # 每个短语的字数
@@ -162,7 +171,6 @@ for epoch in range(1, configure.epochs + 1):
             optimizer.zero_grad()
             cent_loss.backward()
             optimizer.step()
-        # correct_num += get_accuracy(batch.text, output, batch.label)
     train_loss = running_loss / len(train_iter)
 
     print('valid...')
@@ -187,9 +195,9 @@ for epoch in range(1, configure.epochs + 1):
 
     # 将标注正确和错误的语句写入相应文件
     wrong_data = pd.DataFrame({'text': text_wrong, 'target': pron_target_wrong, 'pred': pron_pred_wrong})
-    wrong_data.to_csv('../data/wrong.csv', sep=',', index=False, mode='a')
+    wrong_data.to_csv('../data/wrong_2layers.csv', sep=',', index=False, mode='a')
     correct_data = pd.DataFrame({'text': text_correct, 'target': pron_target_correct, 'pred':pron_pred_correct})
-    correct_data.to_csv('../data/correct.csv', sep=',', index=False, mode='a')
+    correct_data.to_csv('../data/correct_2layers.csv', sep=',', index=False, mode='a')
     print(
         'Epoch: ', epoch,
         '|train_loss: %.4f' % train_loss,
