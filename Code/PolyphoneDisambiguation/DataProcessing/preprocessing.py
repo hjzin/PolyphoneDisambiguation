@@ -6,7 +6,7 @@
 @Description：对数据进行预处理，包括tokenize、建立词典等
 """
 import os
-from torchtext.data import Field, Example, TabularDataset
+from torchtext.data import Field, TabularDataset
 from torchtext.data import BucketIterator, Iterator
 import DataProcessing.configure as config
 
@@ -73,7 +73,7 @@ class BatchIterator:
             dataset=test,
             batch_size=self.batch_size,
             sort=False,
-            sort_within_batch=False,
+            sort_within_batch=False
         )
         return train_iter, val_iter, test_iter
 
