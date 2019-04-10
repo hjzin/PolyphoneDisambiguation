@@ -49,7 +49,7 @@ class DisambiguationLSTM(nn.Module):
 
 
 # loss函数和优化器
-model = DisambiguationLSTM(len(batch_iter.TEXT.vocab), 100, 512, len(batch_iter.LABEL.vocab))
+model = DisambiguationLSTM(len(batch_iter.TEXT.vocab), 300, 512, len(batch_iter.LABEL.vocab))
 print(model)
 loss_func = nn.CrossEntropyLoss()
 optimizer = optim.Adam(model.parameters(), lr=0.01)
@@ -63,23 +63,7 @@ def myCrossEntropy(input, target):
     :return: 当前的loss值
     """
     batch_size = input.size()[0]
-    # num = input.size()[1]
-    # classes = input.size()[2]
     loss = torch.FloatTensor(1)
-
-    # for i in range(batch_size):
-    #     x = torch.zeros(num)
-    #     for j in range(num):
-    #         x[j] -= input[i][j][target[i][j]]
-    #     x_1 = torch.zeros(num)
-    #     for p in range(num):
-    #         for q in range(classes):
-    #             x_1[p] += torch.exp(input[i][p][q])
-    #     res = torch.FloatTensor(1)
-    #     for n in range(num):
-    #         res += x[n] + torch.log(x_1[n])
-    #     loss += torch.div(res, torch.FloatTensor([num]))
-    # result = torch.div(loss, torch.FloatTensor([batch_size]))
 
     for i in range(batch_size):
         loss_i = loss_func(input[i], target[i])
@@ -97,7 +81,10 @@ def get_accuracy(texts, output, target):
     :return: 该batch中标对的多音字总数
     """
     null_token = batch_iter.LABEL.vocab.stoi['NA']
+    unk_token = batch_iter.LABEL.vocab.stoi['<unk>']
+    pad_token = batch_iter.LABEL.vocab.stoi['<pad>']
     polyphone_index = torch.ne(target, null_token)
+
     batch_size = output.size()[0]
     if batch_size == 1:
         pred_y = torch.argmax(output, 1)
@@ -110,11 +97,12 @@ def get_accuracy(texts, output, target):
         correct_phrase = 0      # 每一个短语中标注正确的多音字数
         polyphone_num = 0       # 短语中的多音字个数
         for n in range(num):
-            if polyphone_index[b][n] == 1:  # 如果该字为多音字
-                polyphone_num += 1
-                if pred_y[b][n] == target[b][n]:
-                    correct_phrase += 1
-                    correct_all += 1
+            if polyphone_index[b][n] == 1:  # 如果该字不为非多音字
+                if target[b][n] != unk_token and target[b][n] != pad_token:     # 排除<unk>和<pad>的影响
+                    polyphone_num += 1
+                    if pred_y[b][n] == target[b][n]:
+                        correct_phrase += 1
+                        correct_all += 1
         # 如果一句话中有多音字标注错误，将其输出到标注错误的文件中
         if correct_phrase != polyphone_num:
             temp_target = []
@@ -171,6 +159,7 @@ for epoch in range(1, configure.epochs + 1):
             optimizer.zero_grad()
             cent_loss.backward()
             optimizer.step()
+    # print(running_loss)
     train_loss = running_loss / len(train_iter)
 
     print('valid...')
@@ -190,21 +179,23 @@ for epoch in range(1, configure.epochs + 1):
 
         correct_num += get_accuracy(v_batch.text, val_output, v_batch.label)
         # 求准确率，计算公式：数据集中标对的多音字个数 / 数据集中多音字总数
+    old_acc = 0
     acc = correct_num / polyphone_valid
     valid_loss /= len(valid_iter)
-
+    if acc > old_acc:
+        torch.save(model.state_dict(), 'param.pkl')
+    old_acc = acc
     # 将标注正确和错误的语句写入相应文件
     wrong_data = pd.DataFrame({'text': text_wrong, 'target': pron_target_wrong, 'pred': pron_pred_wrong})
-    wrong_data.to_csv('../data/wrong_2layers.csv', sep=',', index=False, mode='a')
+    wrong_data.to_csv('../data/wrong_1layers.csv', sep=',', index=False, mode='a', encoding='utf-8')
     correct_data = pd.DataFrame({'text': text_correct, 'target': pron_target_correct, 'pred':pron_pred_correct})
-    correct_data.to_csv('../data/correct_2layers.csv', sep=',', index=False, mode='a')
+    correct_data.to_csv('../data/correct_1layers.csv', sep=',', index=False, mode='a', encoding='utf-8')
     print(
         'Epoch: ', epoch,
         '|train_loss: %.4f' % train_loss,
         '|valid_loss: %.4f' % valid_loss,
         '|accuracy_val: %.4f' % acc
     )
-
 
 
 

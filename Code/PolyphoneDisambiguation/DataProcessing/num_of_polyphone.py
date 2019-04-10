@@ -39,4 +39,4 @@ def get_num_in_phrase(file_path):
 
 
 if __name__ == '__main__':
-    get_num_in_phrase(config.val_file)
+    get_num_in_phrase(config.tst_file)

@@ -4,8 +4,12 @@
     <list default="true" id="77c8a1c9-2b77-4f37-88c6-8a94c7163752" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/DataProcessing/configure.py" beforeDir="false" afterPath="$PROJECT_DIR$/DataProcessing/configure.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/DataProcessing/preprocessing.py" beforeDir="false" afterPath="$PROJECT_DIR$/DataProcessing/preprocessing.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/DataProcessing/num_of_polyphone.py" beforeDir="false" afterPath="$PROJECT_DIR$/DataProcessing/num_of_polyphone.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/disambiguation_pos.py" beforeDir="false" afterPath="$PROJECT_DIR$/disambiguation_pos.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../data/correct.csv" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../data/correct.xlsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../data/wrong.csv" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../data/wrong.xlsx" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/../../README.md" beforeDir="false" afterPath="$PROJECT_DIR$/../../README.md" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -17,9 +21,9 @@
   <component name="CoverageDataManager">
     <SUITE FILE_PATH="coverage/PolyphoneDisambiguation$DataProcessing.coverage" NAME="DataProcessing Coverage Results" MODIFIED="1552566413630" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/PolyphoneDisambiguation$preprocessing.coverage" NAME="preprocessing Coverage Results" MODIFIED="1554106735819" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
-    <SUITE FILE_PATH="coverage/PolyphoneDisambiguation$num_of_polyphone.coverage" NAME="num_of_polyphone Coverage Results" MODIFIED="1554345615805" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/PolyphoneDisambiguation$num_of_polyphone.coverage" NAME="num_of_polyphone Coverage Results" MODIFIED="1554913691178" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/PolyphoneDisambiguation$csv_phrase.coverage" NAME="csv_phrase Coverage Results" MODIFIED="1553078640583" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
-    <SUITE FILE_PATH="coverage/PolyphoneDisambiguation$pos.coverage" NAME="pos Coverage Results" MODIFIED="1554203414298" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/PolyphoneDisambiguation$pos.coverage" NAME="pos Coverage Results" MODIFIED="1554913065083" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/PolyphoneDisambiguation$make_datasets.coverage" NAME="make_datasets Coverage Results" MODIFIED="1554036472524" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/PolyphoneDisambiguation$PolyphoneDisambiguation.coverage" NAME="PolyphoneDisambiguation Coverage Results" MODIFIED="1553222700850" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/PolyphoneDisambiguation$disambiguation.coverage" NAME="disambiguation Coverage Results" MODIFIED="1551359642950" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
@@ -49,13 +53,13 @@
       <usages-collector id="statistics.file.extensions.edit">
         <counts>
           <entry key="dummy" value="59" />
-          <entry key="py" value="21909" />
+          <entry key="py" value="22592" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
         <counts>
           <entry key="PLAIN_TEXT" value="59" />
-          <entry key="Python" value="21909" />
+          <entry key="Python" value="22592" />
         </counts>
       </usages-collector>
     </session>
@@ -65,37 +69,16 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/disambiguation.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-618">
-              <caret line="32" lean-forward="true" selection-start-line="32" selection-end-line="32" />
-              <folding>
-                <element signature="e#96#108#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/disambiguation_pos.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="4269">
-              <caret line="198" lean-forward="true" selection-start-line="198" selection-end-line="198" />
+            <state relative-caret-position="1954">
+              <caret line="173" column="29" selection-start-line="173" selection-start-column="29" selection-end-line="173" selection-end-column="29" />
               <folding>
                 <element signature="e#100#112#0" expanded="true" />
-                <marker date="1554364727678" expanded="true" signature="1444:1445" ph="..." />
-                <marker date="1554364727678" expanded="true" signature="4585:4587" ph="..." />
+                <marker date="1554900422675" expanded="true" signature="1490:1491" ph="..." />
+                <marker date="1554900422675" expanded="true" signature="4388:4390" ph="..." />
               </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$USER_HOME$/anaconda3/lib/python3.7/site-packages/torch/nn/functional.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="733">
-              <caret line="1810" column="14" lean-forward="true" selection-start-line="1810" selection-start-column="14" selection-end-line="1810" selection-end-column="14" />
             </state>
           </provider>
         </entry>
@@ -103,13 +86,12 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/DataProcessing/preprocessing.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-98">
-              <caret line="60" selection-start-line="60" selection-end-line="60" />
+            <state relative-caret-position="232">
+              <caret line="8" column="34" selection-start-line="8" selection-start-column="34" selection-end-line="8" selection-end-column="34" />
               <folding>
-                <element signature="e#124#133#0" expanded="true" />
-                <marker date="1554041910193" expanded="true" signature="309:314" ph="..." />
-                <marker date="1554041910193" expanded="true" signature="442:580" ph="..." />
-                <marker date="1554041910193" expanded="true" signature="600:1094" ph="..." />
+                <marker date="1554733423623" expanded="true" signature="300:305" ph="..." />
+                <marker date="1554733423623" expanded="true" signature="433:571" ph="..." />
+                <marker date="1554733423623" expanded="true" signature="591:1085" ph="..." />
               </folding>
             </state>
           </provider>
@@ -127,8 +109,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/DataProcessing/configure.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="139">
-              <caret line="6" column="3" lean-forward="true" selection-start-line="6" selection-start-column="3" selection-end-line="6" selection-end-column="3" />
+            <state relative-caret-position="266">
+              <caret line="16" column="13" selection-start-line="16" selection-start-column="13" selection-end-line="16" selection-end-column="13" />
             </state>
           </provider>
         </entry>
@@ -136,8 +118,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/DataProcessing/make_datasets.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="232">
-              <caret line="120" column="19" lean-forward="true" selection-start-line="120" selection-start-column="19" selection-end-line="120" selection-end-column="19" />
+            <state relative-caret-position="184">
+              <caret line="120" column="19" selection-start-line="120" selection-start-column="19" selection-end-line="120" selection-end-column="19" />
               <folding>
                 <element signature="e#108#127#0" expanded="true" />
                 <marker date="1553255998031" expanded="true" signature="228:809" ph="..." />
@@ -149,11 +131,11 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/DataProcessing/num_of_polyphone.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="291">
-              <caret line="36" column="32" selection-start-line="36" selection-start-column="32" selection-end-line="36" selection-end-column="32" />
+            <state relative-caret-position="1189">
+              <caret line="41" column="37" selection-start-line="41" selection-start-column="37" selection-end-line="41" selection-end-column="37" />
               <folding>
                 <element signature="e#124#165#0" expanded="true" />
-                <marker date="1554344638071" expanded="true" signature="257:623" ph="..." />
+                <marker date="1554913691171" expanded="true" signature="257:623" ph="..." />
               </folding>
             </state>
           </provider>
@@ -192,9 +174,9 @@
         <option value="$PROJECT_DIR$/DataProcessing/make_datasets.py" />
         <option value="$PROJECT_DIR$/disambiguation.py" />
         <option value="$PROJECT_DIR$/DataProcessing/preprocessing.py" />
+        <option value="$PROJECT_DIR$/disambiguation_pos.py" />
         <option value="$PROJECT_DIR$/DataProcessing/configure.py" />
         <option value="$PROJECT_DIR$/DataProcessing/num_of_polyphone.py" />
-        <option value="$PROJECT_DIR$/disambiguation_pos.py" />
       </list>
     </option>
   </component>
@@ -464,14 +446,15 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="0" width="1440" height="900" extended-state="0" />
+    <editor active="true" />
     <layout>
       <window_info content_ui="combo" id="Project" order="0" weight="0.19384836" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.24964234" />
       <window_info id="Favorites" order="2" side_tool="true" weight="0.3297568" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" />
-      <window_info active="true" anchor="bottom" id="Run" order="2" sideWeight="0.49785408" visible="true" weight="0.25662652" />
-      <window_info anchor="bottom" id="Debug" order="3" sideWeight="0.49785408" weight="0.32891566" />
+      <window_info active="true" anchor="bottom" id="Run" order="2" sideWeight="0.49785408" visible="true" weight="0.413253" />
+      <window_info anchor="bottom" id="Debug" order="3" sideWeight="0.49785408" weight="0.35180724" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="bottom" id="TODO" order="6" sideWeight="0.49928468" weight="0.41445783" />
@@ -479,7 +462,7 @@
       <window_info anchor="bottom" id="Version Control" order="8" show_stripe_button="false" />
       <window_info anchor="bottom" id="Database Changes" order="9" show_stripe_button="false" />
       <window_info anchor="bottom" id="Event Log" order="10" sideWeight="0.50214595" side_tool="true" weight="0.39759037" />
-      <window_info anchor="bottom" id="Terminal" order="11" sideWeight="0.49928468" weight="0.13975903" />
+      <window_info anchor="bottom" id="Terminal" order="11" sideWeight="0.49928468" weight="0.3566265" />
       <window_info anchor="bottom" id="Python Console" order="12" sideWeight="0.4985694" weight="0.46144578" />
       <window_info anchor="right" id="Commander" order="0" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
@@ -489,26 +472,26 @@
       <window_info anchor="right" id="Database" order="5" />
     </layout>
     <layout-to-restore>
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.087267525" />
-      <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
-      <window_info id="Favorites" order="2" side_tool="true" />
+      <window_info content_ui="combo" id="Project" order="0" weight="0.19384836" />
+      <window_info id="Structure" order="1" side_tool="true" weight="0.24964234" />
+      <window_info id="Favorites" order="2" side_tool="true" weight="0.3297568" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" />
-      <window_info active="true" anchor="bottom" id="Run" order="2" sideWeight="0.49928468" visible="true" weight="0.084337346" />
-      <window_info anchor="bottom" id="Debug" order="3" sideWeight="0.4985694" weight="0.49156627" />
+      <window_info active="true" anchor="bottom" id="Run" order="2" sideWeight="0.49785408" visible="true" weight="0.413253" />
+      <window_info anchor="bottom" id="Debug" order="3" sideWeight="0.49785408" weight="0.35180724" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
-      <window_info anchor="bottom" id="TODO" order="6" sideWeight="0.49928468" weight="0.32891566" />
+      <window_info anchor="bottom" id="TODO" order="6" sideWeight="0.49928468" weight="0.41445783" />
       <window_info anchor="bottom" id="Docker" order="7" show_stripe_button="false" />
       <window_info anchor="bottom" id="Version Control" order="8" show_stripe_button="false" />
       <window_info anchor="bottom" id="Database Changes" order="9" show_stripe_button="false" />
-      <window_info anchor="bottom" id="Event Log" order="10" sideWeight="0.50143063" side_tool="true" weight="0.46144578" />
-      <window_info anchor="bottom" id="Terminal" order="11" sideWeight="0.49928468" weight="0.16746987" />
+      <window_info anchor="bottom" id="Event Log" order="10" sideWeight="0.50214595" side_tool="true" weight="0.39759037" />
+      <window_info anchor="bottom" id="Terminal" order="11" sideWeight="0.49928468" weight="0.3566265" />
       <window_info anchor="bottom" id="Python Console" order="12" sideWeight="0.4985694" weight="0.46144578" />
       <window_info anchor="right" id="Commander" order="0" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
-      <window_info anchor="right" id="SciView" order="3" weight="0.084406294" />
+      <window_info anchor="right" id="SciView" order="3" weight="0.3197425" />
       <window_info anchor="right" x="0" y="0" width="310" height="700" id="Documentation" order="4" side_tool="true" weight="0.31330472" />
       <window_info anchor="right" id="Database" order="5" />
     </layout-to-restore>
@@ -520,6 +503,15 @@
     <option name="myLimit" value="2678400000" />
   </component>
   <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/disambiguation_pos.py</url>
+          <line>156</line>
+          <option name="timeStamp" value="26" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
     <watches-manager>
       <configuration name="PythonConfigurationType">
         <watch expression="batch.text.size()[0]" language="Python" />
@@ -667,20 +659,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$USER_HOME$/anaconda3/lib/python3.7/site-packages/torch/nn/functional.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="733">
-          <caret line="1810" column="14" lean-forward="true" selection-start-line="1810" selection-start-column="14" selection-end-line="1810" selection-end-column="14" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/DataProcessing/poly_dic.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state>
-          <caret column="21" selection-start-column="21" selection-end-column="21" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/DataProcessing/data_analysis.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="211">
@@ -702,52 +680,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/DataProcessing/make_datasets.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="232">
-          <caret line="120" column="19" lean-forward="true" selection-start-line="120" selection-start-column="19" selection-end-line="120" selection-end-column="19" />
-          <folding>
-            <element signature="e#108#127#0" expanded="true" />
-            <marker date="1553255998031" expanded="true" signature="228:809" ph="..." />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/DataProcessing/configure.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="139">
-          <caret line="6" column="3" lean-forward="true" selection-start-line="6" selection-start-column="3" selection-end-line="6" selection-end-column="3" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$USER_HOME$/anaconda3/lib/python3.7/codecs.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="159">
           <caret line="309" selection-start-line="309" selection-end-line="309" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/DataProcessing/preprocessing.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-98">
-          <caret line="60" selection-start-line="60" selection-end-line="60" />
-          <folding>
-            <element signature="e#124#133#0" expanded="true" />
-            <marker date="1554041910193" expanded="true" signature="309:314" ph="..." />
-            <marker date="1554041910193" expanded="true" signature="442:580" ph="..." />
-            <marker date="1554041910193" expanded="true" signature="600:1094" ph="..." />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/DataProcessing/num_of_polyphone.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="291">
-          <caret line="36" column="32" selection-start-line="36" selection-start-column="32" selection-end-line="36" selection-end-column="32" />
-          <folding>
-            <element signature="e#124#165#0" expanded="true" />
-            <marker date="1554344638071" expanded="true" signature="257:623" ph="..." />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -761,14 +697,69 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$USER_HOME$/anaconda3/lib/python3.7/site-packages/torch/nn/functional.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1069">
+          <caret line="1810" column="14" lean-forward="true" selection-start-line="1810" selection-start-column="14" selection-end-line="1810" selection-end-column="14" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/DataProcessing/poly_dic.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state>
+          <caret column="21" selection-start-column="21" selection-end-column="21" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/DataProcessing/make_datasets.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="184">
+          <caret line="120" column="19" selection-start-line="120" selection-start-column="19" selection-end-line="120" selection-end-column="19" />
+          <folding>
+            <element signature="e#108#127#0" expanded="true" />
+            <marker date="1553255998031" expanded="true" signature="228:809" ph="..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/DataProcessing/preprocessing.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="232">
+          <caret line="8" column="34" selection-start-line="8" selection-start-column="34" selection-end-line="8" selection-end-column="34" />
+          <folding>
+            <marker date="1554733423623" expanded="true" signature="300:305" ph="..." />
+            <marker date="1554733423623" expanded="true" signature="433:571" ph="..." />
+            <marker date="1554733423623" expanded="true" signature="591:1085" ph="..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/DataProcessing/configure.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="266">
+          <caret line="16" column="13" selection-start-line="16" selection-start-column="13" selection-end-line="16" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/DataProcessing/num_of_polyphone.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1189">
+          <caret line="41" column="37" selection-start-line="41" selection-start-column="37" selection-end-line="41" selection-end-column="37" />
+          <folding>
+            <element signature="e#124#165#0" expanded="true" />
+            <marker date="1554913691171" expanded="true" signature="257:623" ph="..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/disambiguation_pos.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="4269">
-          <caret line="198" lean-forward="true" selection-start-line="198" selection-end-line="198" />
+        <state relative-caret-position="1954">
+          <caret line="173" column="29" selection-start-line="173" selection-start-column="29" selection-end-line="173" selection-end-column="29" />
           <folding>
             <element signature="e#100#112#0" expanded="true" />
-            <marker date="1554364727678" expanded="true" signature="1444:1445" ph="..." />
-            <marker date="1554364727678" expanded="true" signature="4585:4587" ph="..." />
+            <marker date="1554900422675" expanded="true" signature="1490:1491" ph="..." />
+            <marker date="1554900422675" expanded="true" signature="4388:4390" ph="..." />
           </folding>
         </state>
       </provider>
