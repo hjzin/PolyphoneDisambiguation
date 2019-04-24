@@ -25,6 +25,11 @@ text_correct = []
 pron_target_correct = []
 pron_pred_correct = []
 
+# 开发集多音字个数
+polyphone_valid = num_of_polyphone.get_num_in_phrase(configure.val_file)
+# 测试集多音字个数
+polyphone_tst = num_of_polyphone.get_num_in_phrase(configure.tst_file)
+
 
 # 用于消岐的神经网络
 class DisambiguationLSTM(nn.Module):
@@ -49,7 +54,7 @@ class DisambiguationLSTM(nn.Module):
 
 
 # loss函数和优化器
-model = DisambiguationLSTM(len(batch_iter.TEXT.vocab), 300, 512, len(batch_iter.LABEL.vocab))
+model = DisambiguationLSTM(len(batch_iter.TEXT.vocab), 300, 300, len(batch_iter.LABEL.vocab))
 print(model)
 loss_func = nn.CrossEntropyLoss()
 optimizer = optim.Adam(model.parameters(), lr=0.01)
@@ -130,6 +135,8 @@ def get_accuracy(texts, output, target):
     return correct_all
 
 
+old_acc = 0
+
 # 训练及验证
 for epoch in range(1, configure.epochs + 1):
     running_loss = 0.0
@@ -137,12 +144,6 @@ for epoch in range(1, configure.epochs + 1):
     print('training...')
     is_correct_train = 0
     correct_num = 0
-    text_wrong = []
-    pron_target_wrong = []
-    pron_pred_wrong = []
-    text_correct = []
-    pron_target_correct = []
-    pron_pred_correct = []
     for step, batch in enumerate(train_iter):
         print('step: ', step)
         output = model(batch.text)
@@ -163,10 +164,9 @@ for epoch in range(1, configure.epochs + 1):
     train_loss = running_loss / len(train_iter)
 
     print('valid...')
-    model.eval()
+    # model.eval()
     valid_loss = 0.0
     correct_num = 0
-    polyphone_valid = num_of_polyphone.get_num_in_phrase(configure.val_file)
     for v_step, v_batch in enumerate(valid_iter):
         val_output = model(v_batch.text)
         if configure.batch_size == 1:
@@ -179,17 +179,11 @@ for epoch in range(1, configure.epochs + 1):
 
         correct_num += get_accuracy(v_batch.text, val_output, v_batch.label)
         # 求准确率，计算公式：数据集中标对的多音字个数 / 数据集中多音字总数
-    old_acc = 0
     acc = correct_num / polyphone_valid
     valid_loss /= len(valid_iter)
     if acc > old_acc:
-        torch.save(model.state_dict(), 'param.pkl')
+        torch.save(model.state_dict(), configure.model_path)
     old_acc = acc
-    # 将标注正确和错误的语句写入相应文件
-    wrong_data = pd.DataFrame({'text': text_wrong, 'target': pron_target_wrong, 'pred': pron_pred_wrong})
-    wrong_data.to_csv('../data/wrong_1layers.csv', sep=',', index=False, mode='a', encoding='utf-8')
-    correct_data = pd.DataFrame({'text': text_correct, 'target': pron_target_correct, 'pred':pron_pred_correct})
-    correct_data.to_csv('../data/correct_1layers.csv', sep=',', index=False, mode='a', encoding='utf-8')
     print(
         'Epoch: ', epoch,
         '|train_loss: %.4f' % train_loss,
@@ -198,5 +192,22 @@ for epoch in range(1, configure.epochs + 1):
     )
 
 
+# 在测试集上进行测试
+model_test = DisambiguationLSTM(len(batch_iter.TEXT.vocab), 300, 300, len(batch_iter.LABEL.vocab))
+model_test.load_state_dict(torch.load(configure.model_path))
+print(model_test)
+model_test.eval()
+print('test...')
+correct_num_tst = 0
+for t_step, t_batch in enumerate(test_iter):
+    tst_output = model_test(t_batch.text)
+    correct_num_tst += get_accuracy(t_batch.text, tst_output, t_batch.label)
+acc_tst = correct_num_tst / polyphone_tst
 
+# 将标注正确和错误的语句写入相应文件
+wrong_data = pd.DataFrame({'text': text_wrong, 'target': pron_target_wrong, 'pred': pron_pred_wrong})
+wrong_data.to_csv('../data/wrong_1layers_300.csv', sep=',', index=False, mode='a', encoding='utf-8')
+correct_data = pd.DataFrame({'text': text_correct, 'target': pron_target_correct, 'pred':pron_pred_correct})
+correct_data.to_csv('../data/correct_1layers_300.csv', sep=',', index=False, mode='a', encoding='utf-8')
+print('accuracy_tst: %.4f' % acc_tst)
 

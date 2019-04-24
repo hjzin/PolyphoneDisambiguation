@@ -42,38 +42,26 @@ class BatchIterator:
 
     def create_dataset(self):
         fields = [("text", self.TEXT), ("label", self.LABEL)]
-        train, valid = TabularDataset.splits(
+        train, valid, test = TabularDataset.splits(
             path=os.getcwd(),
             train=self.train_path,
             validation=self.valid_path,
+            test=self.test_path,
             format='csv',
             skip_header=True,
             fields=fields
-        )
-        test_field = [("text", self.TEXT), ("label", None)]
-        test = TabularDataset(
-            path=self.test_path,
-            format='csv',
-            skip_header=True,
-            fields=test_field
         )
         self.TEXT.build_vocab(train)
         self.LABEL.build_vocab(train)
         return train, valid, test
 
     def get_iterator(self, train, valid, test):
-        train_iter, val_iter = BucketIterator.splits(
-            (train, valid),
-            batch_sizes=(self.batch_size, self.batch_size),
+        train_iter, val_iter, test_iter = BucketIterator.splits(
+            (train, valid, test),
+            batch_sizes=(self.batch_size, self.batch_size, self.batch_size),
             sort_key=lambda x: len(x.text),
             sort_within_batch=True,
             shuffle=True
-        )
-        test_iter = Iterator(
-            dataset=test,
-            batch_size=self.batch_size,
-            sort=False,
-            sort_within_batch=False
         )
         return train_iter, val_iter, test_iter
 

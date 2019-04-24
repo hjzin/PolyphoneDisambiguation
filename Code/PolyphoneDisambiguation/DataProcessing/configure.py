@@ -15,3 +15,5 @@ tst_file = '../data/test.csv'
 batch_size = 512
 epochs = 5
 num_layer = 1       # LSTM层数
+
+model_path = 'param_1layer.pkl'
