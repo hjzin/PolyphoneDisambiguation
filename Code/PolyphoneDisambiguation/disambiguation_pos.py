@@ -199,6 +199,12 @@ print(model_test)
 model_test.eval()
 print('test...')
 correct_num_tst = 0
+text_wrong = []
+pron_target_wrong = []
+pron_pred_wrong = []
+text_correct = []
+pron_target_correct = []
+pron_pred_correct = []
 for t_step, t_batch in enumerate(test_iter):
     tst_output = model_test(t_batch.text)
     correct_num_tst += get_accuracy(t_batch.text, tst_output, t_batch.label)

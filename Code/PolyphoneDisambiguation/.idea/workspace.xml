@@ -2,15 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="77c8a1c9-2b77-4f37-88c6-8a94c7163752" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/DataProcessing/configure.py" beforeDir="false" afterPath="$PROJECT_DIR$/DataProcessing/configure.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/DataProcessing/preprocessing.py" beforeDir="false" afterPath="$PROJECT_DIR$/DataProcessing/preprocessing.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/disambiguation_pos.py" beforeDir="false" afterPath="$PROJECT_DIR$/disambiguation_pos.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/param.pkl" beforeDir="false" afterPath="$PROJECT_DIR$/param.pkl" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../data/correct_1layers.csv" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../data/correct_2layers.csv" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../data/wrong_1layers.csv" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../data/wrong_2layers.csv" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/param_1layer.pkl" beforeDir="false" afterPath="$PROJECT_DIR$/param_1layer.pkl" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../../presentations/问题理解.pptx" beforeDir="false" afterPath="$PROJECT_DIR$/../../presentations/问题理解.pptx" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -24,7 +17,7 @@
     <SUITE FILE_PATH="coverage/PolyphoneDisambiguation$preprocessing.coverage" NAME="preprocessing Coverage Results" MODIFIED="1554106735819" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/PolyphoneDisambiguation$num_of_polyphone.coverage" NAME="num_of_polyphone Coverage Results" MODIFIED="1554913691178" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/PolyphoneDisambiguation$csv_phrase.coverage" NAME="csv_phrase Coverage Results" MODIFIED="1553078640583" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
-    <SUITE FILE_PATH="coverage/PolyphoneDisambiguation$pos.coverage" NAME="pos Coverage Results" MODIFIED="1556032044602" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/PolyphoneDisambiguation$pos.coverage" NAME="pos Coverage Results" MODIFIED="1556078515702" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/PolyphoneDisambiguation$make_datasets.coverage" NAME="make_datasets Coverage Results" MODIFIED="1554036472524" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/PolyphoneDisambiguation$PolyphoneDisambiguation.coverage" NAME="PolyphoneDisambiguation Coverage Results" MODIFIED="1553222700850" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/PolyphoneDisambiguation$disambiguation.coverage" NAME="disambiguation Coverage Results" MODIFIED="1551359642950" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
@@ -54,13 +47,13 @@
       <usages-collector id="statistics.file.extensions.edit">
         <counts>
           <entry key="dummy" value="59" />
-          <entry key="py" value="23042" />
+          <entry key="py" value="23043" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
         <counts>
           <entry key="PLAIN_TEXT" value="59" />
-          <entry key="Python" value="23042" />
+          <entry key="Python" value="23043" />
         </counts>
       </usages-collector>
     </session>
@@ -70,24 +63,24 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/disambiguation_pos.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="5818">
-              <caret line="210" column="38" selection-start-line="210" selection-start-column="38" selection-end-line="210" selection-end-column="38" />
+            <state relative-caret-position="-213">
+              <caret line="198" column="17" lean-forward="true" selection-start-line="198" selection-start-column="17" selection-end-line="198" selection-end-column="17" />
               <folding>
                 <element signature="e#100#112#0" expanded="true" />
-                <marker date="1556032044596" expanded="true" signature="1657:1658" ph="..." />
-                <marker date="1556032044596" expanded="true" signature="4555:4570" ph="..." />
+                <marker date="1556078318602" expanded="true" signature="1657:1658" ph="..." />
+                <marker date="1556078318602" expanded="true" signature="4555:4570" ph="..." />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/DataProcessing/preprocessing.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="397">
+            <state relative-caret-position="1885">
               <caret line="64" column="9" selection-start-line="64" selection-start-column="9" selection-end-line="64" selection-end-column="9" />
               <folding>
                 <element signature="e#125#134#0" expanded="true" />
@@ -111,7 +104,7 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/DataProcessing/configure.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="290">
+            <state relative-caret-position="218">
               <caret line="18" column="21" selection-start-line="18" selection-start-column="21" selection-end-line="18" selection-end-column="21" />
             </state>
           </provider>
@@ -454,14 +447,13 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="0" width="1440" height="900" extended-state="0" />
-    <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.14306152" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.15736766" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.24964234" />
       <window_info id="Favorites" order="2" side_tool="true" weight="0.3297568" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" />
-      <window_info active="true" anchor="bottom" id="Run" order="2" sideWeight="0.49785408" visible="true" weight="0.0" />
+      <window_info active="true" anchor="bottom" id="Run" order="2" sideWeight="0.49785408" visible="true" weight="0.11686747" />
       <window_info anchor="bottom" id="Debug" order="3" sideWeight="0.49785408" weight="0.35180724" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
@@ -739,34 +731,34 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/DataProcessing/configure.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="290">
-          <caret line="18" column="21" selection-start-line="18" selection-start-column="21" selection-end-line="18" selection-end-column="21" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/disambiguation_pos.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="5818">
-          <caret line="210" column="38" selection-start-line="210" selection-start-column="38" selection-end-line="210" selection-end-column="38" />
-          <folding>
-            <element signature="e#100#112#0" expanded="true" />
-            <marker date="1556032044596" expanded="true" signature="1657:1658" ph="..." />
-            <marker date="1556032044596" expanded="true" signature="4555:4570" ph="..." />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/DataProcessing/preprocessing.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="397">
+        <state relative-caret-position="1885">
           <caret line="64" column="9" selection-start-line="64" selection-start-column="9" selection-end-line="64" selection-end-column="9" />
           <folding>
             <element signature="e#125#134#0" expanded="true" />
             <marker date="1556023875501" expanded="true" signature="300:305" ph="..." />
             <marker date="1556023875501" expanded="true" signature="433:571" ph="..." />
             <marker date="1556023875501" expanded="true" signature="591:1085" ph="..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/DataProcessing/configure.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="218">
+          <caret line="18" column="21" selection-start-line="18" selection-start-column="21" selection-end-line="18" selection-end-column="21" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/disambiguation_pos.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-213">
+          <caret line="198" column="17" lean-forward="true" selection-start-line="198" selection-start-column="17" selection-end-line="198" selection-end-column="17" />
+          <folding>
+            <element signature="e#100#112#0" expanded="true" />
+            <marker date="1556078318602" expanded="true" signature="1657:1658" ph="..." />
+            <marker date="1556078318602" expanded="true" signature="4555:4570" ph="..." />
           </folding>
         </state>
       </provider>
